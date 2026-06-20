@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ShopHub — Frontend Assignment (Whatbytes)
 
-## Getting Started
+A small e-commerce storefront built with Next.js (App Router) and Tailwind CSS, featuring a filterable product listing, dynamic product detail pages, and a persistent shopping cart.
 
-First, run the development server:
+**Live demo:** _add your Vercel URL here after deploying_
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Features
+
+- **Home page (`/`)** — responsive product grid (3 columns on desktop, 2 on tablet, 1 on mobile) with a sidebar for category, price, and brand filters, plus a header search bar. Filters are reflected in the URL (e.g. `/?category=Electronics&maxPrice=500`).
+- **Product detail page (`/product/[id]`)** — image gallery, quantity selector, and an "Add to Cart" button that takes you straight to the cart.
+- **Cart page (`/cart`)** — update quantities, remove items, and see a price summary. Cart state is kept in `localStorage` so it survives page refreshes.
+- **Empty states** — a friendly message is shown when no products match the active filters, and when the cart is empty.
+
+## Tech stack
+
+- [Next.js](https://nextjs.org/) (App Router)
+- [Tailwind CSS](https://tailwindcss.com/) for styling
+- [Zustand](https://github.com/pmndrs/zustand) for cart state, with its `persist` middleware handling `localStorage`
+- [lucide-react](https://lucide.dev/) for icons
+
+## Project structure
+
+```
+src/
+  app/                     # Routes (App Router)
+    page.js                # Home page
+    product/[id]/page.js   # Product detail page
+    cart/page.js           # Cart page
+    layout.js              # Root layout (Header + Footer)
+  components/
+    layout/                # Header, Footer
+    home/                  # Sidebar, filters, product grid/card
+    product/                # Image gallery, quantity selector, reviews
+    cart/                   # Cart item row, cart summary
+    ui/                     # Small shared pieces (rating stars, empty state)
+  context/
+    CartContext.js          # Zustand cart store
+  data/
+    products.js              # Static product catalogue
+  lib/
+    filterProducts.js        # Filtering logic (category, price, search)
+    formatPrice.js            # Price formatting helper
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Getting started
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+## Build
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploying to Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push this repository to GitHub.
+2. Go to [vercel.com/new](https://vercel.com/new) and import the repository.
+3. Vercel will auto-detect Next.js — no extra configuration is needed.
+4. Once deployed, copy the live URL into the top of this README.
