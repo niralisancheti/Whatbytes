@@ -2,7 +2,8 @@
 
 A small e-commerce storefront built with Next.js (App Router) and Tailwind CSS, featuring a filterable product listing, dynamic product detail pages, and a persistent shopping cart.
 
-**Live demo:** (https://whatbytes-jet.vercel.app/)
+**Live demo:** 
+(https://whatbytes-jet.vercel.app/) 
 
 ## Features
 
