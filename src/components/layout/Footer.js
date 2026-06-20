@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Twitter, Instagram } from "lucide-react";
+import { Share2, Send, AtSign } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -37,21 +37,21 @@ export default function Footer() {
               aria-label="Facebook"
               className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 hover:bg-blue-500"
             >
-              <Facebook className="h-4 w-4" />
+              <Share2 className="h-4 w-4" />
             </Link>
             <Link
               href="#"
               aria-label="Twitter"
               className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 hover:bg-blue-500"
             >
-              <Twitter className="h-4 w-4" />
+              <Send className="h-4 w-4" />
             </Link>
             <Link
               href="#"
               aria-label="Instagram"
               className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 hover:bg-blue-500"
             >
-              <Instagram className="h-4 w-4" />
+              <AtSign className="h-4 w-4" />
             </Link>
           </div>
         </div>

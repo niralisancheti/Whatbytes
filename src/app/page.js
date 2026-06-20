@@ -1,3 +1,10 @@
+import { Suspense } from "react";
+import ProductListing from "@/components/home/ProductListing";
+
 export default function Home() {
-  return <div>Home page placeholder</div>;
+  return (
+    <Suspense fallback={null}>
+      <ProductListing />
+    </Suspense>
+  );
 }
