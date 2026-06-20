@@ -1,24 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { ShoppingBag } from "lucide-react";
 import CartItem from "@/components/cart/CartItem";
 import CartSummary from "@/components/cart/CartSummary";
 import EmptyState from "@/components/ui/EmptyState";
 import { useCartStore } from "@/context/CartContext";
+import { useHasHydrated } from "@/context/useHasHydrated";
 
 export default function CartView() {
-  const [hasMounted, setHasMounted] = useState(false);
+  const hasHydrated = useHasHydrated();
   const items = useCartStore((state) => state.items);
   const getTotalPrice = useCartStore((state) => state.getTotalPrice);
 
   // The cart is persisted to localStorage, which is only available on the
-  // client. Waiting for mount avoids a server/client markup mismatch.
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
-  if (!hasMounted) {
+  // client. Waiting for hydration avoids a server/client markup mismatch.
+  if (!hasHydrated) {
     return null;
   }
 
